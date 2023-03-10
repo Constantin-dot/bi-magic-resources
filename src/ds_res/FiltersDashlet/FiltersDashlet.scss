@@ -1,0 +1,55 @@
+.FiltersDashlet {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__block{
+    margin-top: 30px;
+    width: 350px;
+
+    &-variant {
+    
+      &-label {
+        margin-left: 15px;
+      }
+    }
+
+    &-chart {
+      margin-top: 30px;
+  
+      &-label {
+        margin-left: 15px;
+      }
+    }
+
+    &-cod {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+  
+      &-item {
+        margin-top: 8px;
+  
+        &-title {
+          margin-left: 8px;
+        }
+      }
+    }
+  
+    &-org-name {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+  
+      &-item {
+        margin-top: 8px;
+  
+        &-title {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+}
