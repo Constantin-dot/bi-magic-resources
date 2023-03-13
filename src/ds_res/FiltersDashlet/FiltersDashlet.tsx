@@ -1,3 +1,4 @@
+import { UrlState } from "bi-internal/core";
 import React, { useEffect, useState } from "react";
 import { ChartType, IMyServiceModel, MyService, VariantType } from "../services/MyService";
 import "./FiltersDashlet.scss";
@@ -7,6 +8,7 @@ const ORG_NAME = ["Инфекционное", "Кардиология", "Кос�
 
 const FiltersDashlet = () => {
   const service = MyService.createInstance(COOB_ID);
+  const serviceUrls = UrlState.getInstance();
 
   const [variant, setVariant] = useState("table");
   const [chart, setChart] = useState("line");
@@ -45,6 +47,15 @@ const FiltersDashlet = () => {
     });
     service.changeFilteredDataAndFilters(result, filter);
   };
+
+  const onUrlUpdated = (value: any) => {
+    value?.variant && service.changeVariant(value.variant);
+    value?.chart && service.changeChart(value.chart);
+  };
+
+  useEffect(() => {
+    serviceUrls.subscribeUpdatesAndNotify(onUrlUpdated)
+  }, []);
 
   useEffect(() => {
     getDataByFilter();

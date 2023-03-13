@@ -69,11 +69,13 @@ export class MyService extends BaseService<IMyServiceModel> {
   public changeVariant(variant: VariantType): void {
     // @ts-ignore
     this._updateWithData({ variant });
+    UrlState.getInstance().navigate({ variant });
   }
 
   public changeChart(chart: ChartType): void {
     // @ts-ignore
     this._updateWithData({ chart });
+    UrlState.getInstance().navigate({ chart });
   }
 
   public changeFilteredDataAndFilters(data: Array<FilteredItemType>, filters: FiltersType): void {
